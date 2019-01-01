@@ -4,7 +4,6 @@ context('FizzBuzz', () => {
   });
 
   it('should show result when click Get Number', () => {
-    // cy.get('button').click();
     cy.contains('Get Number').click();
     cy.contains('Fizz');
   });

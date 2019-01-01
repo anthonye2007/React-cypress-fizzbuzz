@@ -7,4 +7,9 @@ describe('Fizzbuzz', () => {
     const wrapper = mount(<App />);
     expect(wrapper.find('button').text()).toEqual("Get Number");
   });
+
+  it('should show result', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('p#result').text()).toEqual('Fizz');
+  });
 });
