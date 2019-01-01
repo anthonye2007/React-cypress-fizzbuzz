@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Result from './Result';
+import { getNumber } from './getNumber';
 
 class App extends Component {
   constructor(props) {
@@ -11,16 +12,18 @@ class App extends Component {
     return (
       <div className="App">
         <button id="submit" onClick={this.handleClick}>Get Number</button>
-        <Result shouldShow={this.state.shouldShow} ></Result>
+        <Result 
+          shouldShow={this.state.shouldShow} 
+          number={this.state.number} 
+        ></Result>
       </div>
     );
   }
 
   handleClick = () => {
-    fetch('http://localhost:3001/number').then(() => {
-      this.setState({shouldShow: true});
+    getNumber().then((num) => {
+      this.setState({shouldShow: true, number: num});
     })
-    // fetch('http://localhost:3001/favorite-fruits');
   }
 }
 

@@ -3,8 +3,8 @@ import { mount } from 'enzyme';
 import Result from './Result';
 
 describe('Result', () => {
-  it('should display Fizz', () => {
-    const wrapper = mount(<Result shouldShow={true} />)
+  it('should display Fizz for 3', () => {
+    const wrapper = mount(<Result shouldShow={true} number={3} />)
     expect(wrapper.text()).toEqual("Fizz");
   });
 

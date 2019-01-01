@@ -3,26 +3,33 @@ context('FizzBuzz', () => {
     
   });
 
-  it('should show result when click Get Number', () => {
-
-    cy.server()           // enable response stubbing
-    cy.route({
-      method: 'GET',      // Route all GET requests
-      url: 'http://localhost/users/*',    // that have a URL that matches '/users/*'
-      response: []        // and force the response to be: []
-    });
-
+  it('should show display Fizz when response returns 6', () => {
     cy.visit('http://localhost:3000', 
       { 
         onBeforeLoad: (win) => {
           cy.stub(win, 'fetch')
             .withArgs('http://localhost:3001/number')
-            .returns( Promise.resolve() )
+            .returns( Promise.resolve(6) )
         }
       }
     );
 
     cy.contains('Get Number').click();
-    cy.contains('Fizz');
+    cy.get('#result').should('have.text', 'Fizz');
+  });
+
+  it('should show display Buzz when response returns 10', () => {
+    cy.visit('http://localhost:3000', 
+      { 
+        onBeforeLoad: (win) => {
+          cy.stub(win, 'fetch')
+            .withArgs('http://localhost:3001/number')
+            .returns( Promise.resolve(10) )
+        }
+      }
+    );
+
+    cy.contains('Get Number').click();
+    cy.get('#result').should('have.text', 'Buzz');
   });
 });
