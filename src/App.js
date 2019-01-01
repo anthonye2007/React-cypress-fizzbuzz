@@ -17,7 +17,10 @@ class App extends Component {
   }
 
   handleClick = () => {
-    this.setState({shouldShow: true});
+    fetch('http://localhost:3001/number').then(() => {
+      this.setState({shouldShow: true});
+    })
+    // fetch('http://localhost:3001/favorite-fruits');
   }
 }
 
