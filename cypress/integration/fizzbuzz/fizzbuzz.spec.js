@@ -3,7 +3,9 @@ context('FizzBuzz', () => {
     cy.visit('http://localhost:3000');
   });
 
-  it('should have a Submit button', () => {
-    cy.get('button').should('be.visible');
+  it('should show result when click Get Number', () => {
+    // cy.get('button').click();
+    cy.contains('Get Number').click();
+    cy.contains('Fizz');
   });
 });
