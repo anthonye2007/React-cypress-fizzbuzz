@@ -8,10 +8,13 @@ class App extends Component {
     super(props);
     this.state = { shouldShow: false };
   }
+  
   render() {
     return (
       <div className="App">
-        <button id="submit" onClick={this.handleClick}>Get Number</button>
+        <button id="submit" 
+          onClick={this.handleClick}
+        >Get Number</button>
         <Result 
           shouldShow={this.state.shouldShow} 
           number={this.state.number} 

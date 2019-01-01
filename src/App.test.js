@@ -12,11 +12,6 @@ describe('Fizzbuzz', () => {
     expect(wrapper.find('button').text()).toEqual("Get Number");
   });
 
-  // it('should show result on button click', () => {
-  //   wrapper.find('button#submit').simulate('click');
-  //   expect(getResult(wrapper)).toEqual('Fizz');
-  // });
-
   it('should not show result before clicking button', () => {
     expect(getResult(wrapper)).toEqual('');
   });

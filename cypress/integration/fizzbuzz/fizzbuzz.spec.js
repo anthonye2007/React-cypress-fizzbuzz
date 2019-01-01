@@ -5,7 +5,13 @@ context('FizzBuzz - Integration', () => {
         onBeforeLoad: (win) => {
           cy.stub(win, 'fetch')
             .withArgs('http://localhost:3001/number')
-            .returns( Promise.resolve(6) )
+            .returns( Promise.resolve(
+              { 
+                json: () => { 
+                  return { value: 6 } 
+                }
+              })
+            );
         }
       }
     );
@@ -20,7 +26,13 @@ context('FizzBuzz - Integration', () => {
         onBeforeLoad: (win) => {
           cy.stub(win, 'fetch')
             .withArgs('http://localhost:3001/number')
-            .returns( Promise.resolve(10) )
+            .returns( Promise.resolve(
+              { 
+                json: () => { 
+                  return { value: 10 } 
+                }
+              })
+            );
         }
       }
     );
