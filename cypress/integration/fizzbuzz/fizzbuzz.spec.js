@@ -17,7 +17,7 @@ context('FizzBuzz', () => {
         onBeforeLoad: (win) => {
           cy.stub(win, 'fetch')
             .withArgs('http://localhost:3001/number')
-            .returns( Promise.resolve({ "value": 6}) )
+            .returns( Promise.resolve() )
         }
       }
     );

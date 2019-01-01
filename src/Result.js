@@ -1,12 +1,13 @@
 import React from 'react';
+import { calculate } from './calculate';
 
 function Result(props) {
+  let value = "";
   if (props.shouldShow) {
-    return <p id="result">Fizz</p>;
+    value = calculate();
   }
-  else {
-    return <p id="result"></p>
-  }
+
+  return <p id="result">{value}</p>
 }
 
 export default Result;

@@ -12,4 +12,9 @@ describe('Result', () => {
     const wrapper = mount(<Result shouldShow={false} />);
     expect(wrapper.text()).toEqual("");
   });
+
+  it('should show Buzz for 5', () => {
+    const wrapper = mount(<Result shouldShow={true} number={5} />)
+    expect(wrapper.text()).toEqual("Buzz");
+  });
 });
