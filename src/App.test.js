@@ -12,3 +12,10 @@ it('renders without crashing', () => {
 it('uses Enzyme', () => {
   mount(<App />)
 });
+
+describe('Fizzbuzz', () => {
+  it('should have a submit button', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('button').text()).toEqual("Submit");
+  });
+});
