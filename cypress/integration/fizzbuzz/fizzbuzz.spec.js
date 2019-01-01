@@ -1,8 +1,4 @@
-context('FizzBuzz', () => {
-  beforeEach(() => {
-    
-  });
-
+context('FizzBuzz - Integration', () => {
   it('should show display Fizz when response returns 6', () => {
     cy.visit('http://localhost:3000', 
       { 
@@ -31,5 +27,14 @@ context('FizzBuzz', () => {
 
     cy.contains('Get Number').click();
     cy.get('#result').should('have.text', 'Buzz');
+  });
+});
+
+context('FizzBuzz - e2e', () => {
+  it('should display Fizz when response returns 6', () => {
+    cy.visit('http://localhost:3000');
+
+    cy.contains('Get Number').click();
+    cy.get('#result').should('have.text', 'Fizz');
   });
 });
