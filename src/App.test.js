@@ -17,11 +17,11 @@ describe('Fizzbuzz', () => {
     expect(getResult(wrapper)).toEqual('');
   });
 
-  it('should display Fizz when number is 3', () => {
+  it('should display Fizz when number is 3', (done) => {
     // fake out network request
     global.fetch = jest.fn(() => Promise.resolve( { 
       json: () => {
-        return { value: 3}
+        return { value: 5}
       }
     }) );
 
@@ -30,7 +30,19 @@ describe('Fizzbuzz', () => {
     wrapper.update();
 
     // assert result is Fizz
-    expect(getResult(wrapper)).toEqual("Fizz");
+
+    setInterval(() => {
+      wrapper.update();
+      console.log('checking...');
+      const text = getResult(wrapper);
+      if (text === "Fizz") {
+        done();
+      }
+      if (text !== "") {
+        done.fail(`Result was ${text} but expected Fizz`);
+      }
+    }, 1);
+    
   });
 });
 
