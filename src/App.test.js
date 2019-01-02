@@ -59,6 +59,21 @@ describe('Fizzbuzz', () => {
       }
     }, 0);
   });
+
+  it('should not keep on mocking', (done) => {
+    wrapper.find('button#submit').simulate('click');
+    wrapper.update();
+
+    setTimeout(() => {
+      wrapper.update();
+      const text = getResult(wrapper);
+      if (text === "Buzz") {
+        done();
+      } else if (text !== "") {
+        done.fail(`Result was ${text} but expected Buzz`);
+      }
+    }, 0);
+  });
 });
 
 function getResult(wrapper) {
