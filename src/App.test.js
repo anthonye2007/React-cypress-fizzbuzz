@@ -18,30 +18,24 @@ describe('Fizzbuzz', () => {
   });
 
   it('should display Fizz when number is 3', (done) => {
-    // fake out network request
     global.fetch = jest.fn(() => Promise.resolve( { 
       json: () => {
-        return { value: 5}
+        return { value: 3 }
       }
     }) );
 
-    // click button
     wrapper.find('button#submit').simulate('click');
     wrapper.update();
 
-    // assert result is Fizz
-
-    setInterval(() => {
+    setTimeout(() => {
       wrapper.update();
-      console.log('checking...');
       const text = getResult(wrapper);
       if (text === "Fizz") {
         done();
-      }
-      if (text !== "") {
+      } else if (text !== "") {
         done.fail(`Result was ${text} but expected Fizz`);
       }
-    }, 1);
+    }, 0);
     
   });
 });
