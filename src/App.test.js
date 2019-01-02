@@ -38,6 +38,27 @@ describe('Fizzbuzz', () => {
     }, 0);
     
   });
+
+  it('should display Buzz when number is 5', (done) => {
+    global.fetch = jest.fn(() => Promise.resolve({
+      json: () => {
+        return { value: 5 }
+      }
+    }));
+
+    wrapper.find('button#submit').simulate('click');
+    wrapper.update();
+
+    setTimeout(() => {
+      wrapper.update();
+      const text = getResult(wrapper);
+      if (text === "Buzz") {
+        done();
+      } else if (text !== "") {
+        done.fail(`Result was ${text} but expected Buzz`);
+      }
+    }, 0);
+  });
 });
 
 function getResult(wrapper) {
