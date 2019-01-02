@@ -18,7 +18,7 @@ describe('Fizzbuzz', () => {
   });
 
   it('should display Fizz when number is 3', (done) => {
-    global.fetch = jest.fn(() => Promise.resolve( { 
+    global.fetch = jest.fn().mockImplementationOnce( () => Promise.resolve( { 
       json: () => {
         return { value: 3 }
       }
@@ -40,7 +40,7 @@ describe('Fizzbuzz', () => {
   });
 
   it('should display Buzz when number is 5', (done) => {
-    global.fetch = jest.fn(() => Promise.resolve({
+    global.fetch = jest.fn().mockImplementationOnce( () => Promise.resolve({
       json: () => {
         return { value: 5 }
       }
