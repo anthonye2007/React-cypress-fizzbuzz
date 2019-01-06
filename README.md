@@ -1,4 +1,4 @@
-# React Cypress Fizzbuzz
+# React Cypress Fizzbuzz on CodeCommit
 Example app showing how to test a React app using Cypress.
 
 I started with a Cypress end-to-end test that clicks a button and verifies some text.
